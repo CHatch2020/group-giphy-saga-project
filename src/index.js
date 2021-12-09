@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
+
+
 //import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 // Provider allows us to use redux within our react app
@@ -15,16 +17,31 @@ import axios from 'axios';
 
 // This is out watcher function
 function* rootSaga() {
-    yield takeEvery('', );
-    yield takeEvery('',);
+    yield takeEvery('GIT_GIFFS', fetchGifSearch);
+    // yield takeEvery('',);
 }
 
-const listOfGifReducer = (state =[], action) => {
+const listOfGifReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_GIFS':
-        return action.payload;
+            return action.payload;
         default:
             return state;
+    }
+}
+
+//SAGA Function that hits server route to ping giphy API
+function* fetchGifSearch(action) {
+    console.log(action)
+    try{
+        axios({
+            method: 'POST',
+            url: '/gifs',
+            data: action.payload
+        })
+        //HOW to CATCH the response from server.js?
+    } catch(error) {
+        console.log(error);
     }
 }
 
@@ -32,15 +49,14 @@ const sagaMiddleware = createSagaMiddleware();
 
 const storeInstance = createStore(
     combineReducers({
- //       ourreducergoeshere
         listOfGifReducer
     }),
     applyMiddleware(sagaMiddleware, logger),
 )
 
-ReactDOM.render(
-    <Provider store={storeInstance}>
-        <App />
-    </Provider>, 
-    document.getElementById('root'));
+// Pass rootSaga into our sagaMiddleware
+sagaMiddleware.run(rootSaga);
 
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
+    document.getElementById('root'));
+// registerServiceWorker();
