@@ -35,7 +35,7 @@ export default function SearchView() {
       <div>
         <ul>
         {gifArray.map((gif, i) => {
-          return <li key={i}><img src={gif.url}/></li>
+          return <li key={i}><img src={gif.images.original.url}/><button>FAVE</button></li>
         })}
         </ul>
       </div>
