@@ -1,7 +1,7 @@
 import React, {useState}from 'react';
 import { useDispatch } from 'react-redux';
 
-export default function FavoriteView() {
+export default function SearchView() {
   //ALIAS HOOKS
   const dispatch = useDispatch();
   //local state for holding user input
