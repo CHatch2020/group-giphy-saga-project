@@ -12,9 +12,7 @@ export default function FavoriteView() {
 
     dispatch({ 
         type: 'GIT_GIFFS', 
-        payload: {
-            query: searchString
-        } 
+        payload: `&q=${searchString}&limit=10`
     });
   }
 
