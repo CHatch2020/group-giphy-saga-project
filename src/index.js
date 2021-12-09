@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
-
-
 //import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 // Provider allows us to use redux within our react app
@@ -19,6 +17,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('', );
     yield takeEvery('',);
+}
 
 const listOfGifReducer = (state =[], action) => {
     switch (action.type) {
@@ -34,11 +33,14 @@ const sagaMiddleware = createSagaMiddleware();
 const storeInstance = createStore(
     combineReducers({
  //       ourreducergoeshere
+        listOfGifReducer
     }),
     applyMiddleware(sagaMiddleware, logger),
 )
 
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
+ReactDOM.render(
+    <Provider store={storeInstance}>
+        <App />
+    </Provider>, 
     document.getElementById('root'));
-registerServiceWorker();
 
