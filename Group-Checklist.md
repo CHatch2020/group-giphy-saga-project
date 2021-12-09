@@ -6,7 +6,7 @@
   - local state to hold the user input
   - button handler that fires off a dispatch to a SAGA that sends the query to giphy api
 
-[ ] Query the Giphy API Search Endpoint with the given search string FROM THE SERVER.
+[ 👍 ] Query the Giphy API Search Endpoint with the given search string FROM THE SERVER.
   - lives in a SAGA on index.js
   - include the user ?searchStringQuery and limit ~10
   

@@ -21,10 +21,12 @@ function* rootSaga() {
     // yield takeEvery('',);
 }
 
-const listOfGifReducer = (state = [], action) => {
+const searchResultReducer = (state = [], action) => {
     switch (action.type) {
+        
         case 'SET_GIFS':
-            return action.payload;
+            console.log(action.payload.data)
+            return action.payload.data;
         default:
             return state;
     }
@@ -34,12 +36,16 @@ const listOfGifReducer = (state = [], action) => {
 function* fetchGifSearch(action) {
     console.log(action)
     try{
-        axios({
+        const response = yield axios({
             method: 'POST',
             url: '/gifs',
             data: action.payload
         })
         //HOW to CATCH the response from server.js?
+        yield put({
+            type: 'SET_GIFS',
+            payload: response.data
+        });
     } catch(error) {
         console.log(error);
     }
@@ -49,7 +55,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const storeInstance = createStore(
     combineReducers({
-        listOfGifReducer
+        searchResultReducer
     }),
     applyMiddleware(sagaMiddleware, logger),
 )

@@ -1,9 +1,10 @@
 import React, {useState}from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function SearchView() {
   //ALIAS HOOKS
   const dispatch = useDispatch();
+  const gifArray = useSelector((store) => store.searchResultReducer);
   //local state for holding user input
   const [ searchString, setSearchString ] = useState('');
 
@@ -32,7 +33,11 @@ export default function SearchView() {
 
       <h3>BEHOLD GIFS FROM THE INTERNET</h3>
       <div>
-        {/* MAP THROUGH RESULTS */}
+        <ul>
+        {gifArray.map((gif, i) => {
+          return <li key={i}><img src={gif.url}/></li>
+        })}
+        </ul>
       </div>
     </div>
   )

@@ -27,6 +27,7 @@ app.use('/api/category', categoryRouter);
 app.post('/gifs', (req, res) => {
   const apiKey = process.env.API_KEY;
   console.log(req.body)
+  //INCEPTION GET INSIDE A POST
   axios({
       method: 'GET',
       url: `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${req.body.q}&limit=${req.body.limit}`
