@@ -18,7 +18,7 @@ import axios from 'axios';
 // This is out watcher function
 function* rootSaga() {
     yield takeEvery('GIT_GIFFS', fetchGifSearch);
-    // yield takeEvery('',);
+    yield takeEvery('HOLD_FAVE', postFaveGif);
 }
 
 const searchResultReducer = (state = [], action) => {
@@ -29,6 +29,20 @@ const searchResultReducer = (state = [], action) => {
             return action.payload.data;
         default:
             return state;
+    }
+}
+
+//SAGA Function that POSTS faved URL to server to query to database
+function* postFaveGif(action) {
+    console.log(action.payload)
+    try {
+        const response = yield axios({
+            method: 'POST',
+            url: '/api/favorite',
+            data: action.payload
+        })
+    } catch(error) {
+        console.log(error);
     }
 }
 

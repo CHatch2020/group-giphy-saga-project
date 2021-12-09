@@ -17,6 +17,15 @@ export default function SearchView() {
     });
   }
 
+  const handleFave = (index) => {
+    console.log(gifArray[index].images.original.url)
+    
+    // dispatch({
+    //   type: 'HOLD_FAVE',
+    //   payload: gifArray[index].images.orginal.url
+    // })
+  }
+
   return(
     <div>
       <h3> Would You Kindly Provide a Query? </h3>
@@ -35,7 +44,7 @@ export default function SearchView() {
       <div>
         <ul>
         {gifArray.map((gif, i) => {
-          return <li key={i}><img src={gif.images.original.url}/><button>FAVE</button></li>
+          return <li key={i}><img src={gif.images.original.url}/><button onClick={e => handleFave(i)}>FAVE</button></li>
         })}
         </ul>
       </div>
