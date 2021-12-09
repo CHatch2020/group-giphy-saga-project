@@ -2,7 +2,7 @@
 [ ] Component Folder/.jsx
 
 - Allow a user to enter a search string and submit a search request.
-[ ] input/button that takes in the search string
+[ 👍 ] input/button that takes in the search string
   - local state to hold the user input
   - button handler that fires off a dispatch to a SAGA that sends the query to giphy api
 
