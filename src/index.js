@@ -19,6 +19,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('GIT_GIFFS', fetchGifSearch);
     yield takeEvery('HOLD_FAVE', postFaveGif);
+    yield takeEvery('FETCH_FAVES', fetchFaveGifs);
 }
 
 const searchResultReducer = (state = [], action) => {
@@ -32,6 +33,19 @@ const searchResultReducer = (state = [], action) => {
     }
 }
 
+//SAGA Function that GETS favedGifs from DB
+function* fetchFaveGifs(action) {
+    console.log(action)
+    try {
+        const response = yield axios({
+            method: 'GET',
+            url: '/api/favorite'
+        })
+    } catch(error) {
+        console.log(error);
+    }
+}
+
 //SAGA Function that POSTS faved URL to server to query to database
 function* postFaveGif(action) {
     console.log(action.payload)
@@ -39,7 +53,7 @@ function* postFaveGif(action) {
         const response = yield axios({
             method: 'POST',
             url: '/api/favorite',
-            data: action.payload
+            data: {url: action.payload}
         })
     } catch(error) {
         console.log(error);
