@@ -36,6 +36,7 @@ const searchResultReducer = (state = [], action) => {
 const faveGifReducer = (state = [], action) => {
     switch (action.type) {
         case 'STORE_FAVES':
+            console.log(state);
             return action.payload;
         default:
             return state;
