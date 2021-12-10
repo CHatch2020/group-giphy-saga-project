@@ -1,5 +1,6 @@
 import React, {useState}from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './search.css';
 
 export default function SearchView() {
   //ALIAS HOOKS
@@ -28,7 +29,7 @@ export default function SearchView() {
   }
 
   return(
-    <div>
+    <div className="body">
       <h3> Would You Kindly Provide a Query? </h3>
       <div>
         <form onSubmit={submitSearch}>
@@ -43,11 +44,9 @@ export default function SearchView() {
 
       <h3>BEHOLD GIFS FROM THE INTERNET</h3>
       <div>
-        <ul>
         {gifArray.map((gif, i) => {
-          return <li key={i}><img src={gif.images.original.url}/><button onClick={e => handleFave(gif.images.original.url)}>FAVE</button></li>
+          return <p className="images" key={i}><img src={gif.images.original.url}/><button onClick={e => handleFave(gif.images.original.url)}>FAVE</button></p>
         })}
-        </ul>
       </div>
     </div>
   )
