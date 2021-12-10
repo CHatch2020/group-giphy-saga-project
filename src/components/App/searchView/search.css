@@ -1,0 +1,28 @@
+.body {
+    text-align: center;
+}
+
+input {
+    margin-right: 5px;
+    box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.219);
+    border: none;
+}
+
+button {
+    border-color: #5C5F30;
+    border-width: 2px;
+    border-radius: 50px;
+    background-color: #F6A970;
+}
+
+button:hover {
+    border-color: white;
+    background-color: #5C5F30;
+    color: white;
+}
+
+.images {
+    margin-left: 400px;
+    margin-right: 400px;
+    padding-bottom: 30px;
+}

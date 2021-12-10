@@ -16,11 +16,9 @@ export default function FavoriteView() {
   return (
     <div>
       <h2>Your Favorites!</h2>
-      <ul>
         {favGif.map((gif) => {
-          return <li key={gif.id}> <img src={gif.url}/> </li>
+          return <p key={gif.id}> <img src={gif.url}/> </p>
         })}
-      </ul>
     </div>
   );
 }
