@@ -33,6 +33,15 @@ const searchResultReducer = (state = [], action) => {
     }
 }
 
+const faveGifReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'STORE_FAVES':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 //SAGA Function that GETS favedGifs from DB
 function* fetchFaveGifs(action) {
     console.log(action)
@@ -40,6 +49,10 @@ function* fetchFaveGifs(action) {
         const response = yield axios({
             method: 'GET',
             url: '/api/favorite'
+        })
+        yield put({
+            type: 'STORE_FAVES',
+            payload: response.data
         })
     } catch(error) {
         console.log(error);
@@ -83,7 +96,8 @@ const sagaMiddleware = createSagaMiddleware();
 
 const storeInstance = createStore(
     combineReducers({
-        searchResultReducer
+        searchResultReducer,
+        faveGifReducer
     }),
     applyMiddleware(sagaMiddleware, logger),
 )
