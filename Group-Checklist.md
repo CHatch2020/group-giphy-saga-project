@@ -25,6 +25,11 @@
 - building of the SAGA/Reducers axios routes on index.js
 - building of the Server routes that correspond to the axios stuff
 
+1 building Favorite View - Caleb
+2 building POST route on server to DB
+3 building GET route from DB to index reducer for FavoriteView
+4 look up and finish the DB table FOREIGN KEY or REFERS to - Vic
+
 ## Favorites View
 [ ] Component Folder/.jsx
 Allow a user to see all of the Giphy images they have Favorited. The actual images need to appear on the DOM.
