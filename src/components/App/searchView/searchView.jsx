@@ -17,13 +17,14 @@ export default function SearchView() {
     });
   }
 
-  const handleFave = (index) => {
-    console.log(gifArray[index].images.original.url)
-    
-    // dispatch({
-    //   type: 'HOLD_FAVE',
-    //   payload: gifArray[index].images.orginal.url
-    // })
+  const handleFave = (url) => {
+    // console.log(gifArray[index].images.original.url)
+    // const captureURL = gifArray[index].images.original.url;
+    // console.log(captureURL)
+    dispatch({
+      type: 'HOLD_FAVE',
+      payload: url
+    })
   }
 
   return(
@@ -44,7 +45,7 @@ export default function SearchView() {
       <div>
         <ul>
         {gifArray.map((gif, i) => {
-          return <li key={i}><img src={gif.images.original.url}/><button onClick={e => handleFave(i)}>FAVE</button></li>
+          return <li key={i}><img src={gif.images.original.url}/><button onClick={e => handleFave(gif.images.original.url)}>FAVE</button></li>
         })}
         </ul>
       </div>
