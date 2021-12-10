@@ -16,7 +16,7 @@
     return <li key={i}><img gif.url><button onClick={handleFave}>FAVORITE</button></li>
   })
 
-[ ] Allow a user to Favorite any of the resulting images. You'll need to think about what information to save to your own database. Generally you only store the minimum needed to show this image again on the Favorites View.
+[ 👍 ] Allow a user to Favorite any of the resulting images. You'll need to think about what information to save to your own database. Generally you only store the minimum needed to show this image again on the Favorites View.
   - clicking Favorite the handleFave() would grab the corresponding gif URL and
   - dispatch it to a SAGA that POSTS to the DB
 

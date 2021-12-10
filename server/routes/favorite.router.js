@@ -6,7 +6,7 @@ const router = express.Router();
 // return all favorite images
 router.get('/', (req, res) => {
   const queryText = 'SELECT * FROM faveGif';
-  pool.query(queryText, [req.params.id])
+  pool.query(queryText)
     .then((result) => { res.send(result.rows); })
     .catch((err) => {
       console.log('Error completing SELECT GIF query', err);
